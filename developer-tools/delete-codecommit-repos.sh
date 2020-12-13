@@ -1,7 +1,7 @@
 #!/bin/bash
 set -euo pipefail
 
-echo "Enter the keyword for finding repositories to be deleted:"
+echo "Enter the keyword for repositories to be deleted:"
 read keyword
 
 for k in $(aws codecommit list-repositories | jq -r '.repositories[] | select(.repositoryName | contains("'$keyword'")) | .repositoryName'); do
